@@ -1,0 +1,27 @@
+<h1>Funcionando</h1>
+
+<div>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Name</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Direccion 1</th>
+        <th scope="col">Direccion 2</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {{#each responseUsers}}
+        <tr>
+            <td>{{this._email}}</td>
+            <td>{{this._name}}</td>
+            <td>{{this._rol}}</td>
+            {{#each this._direccion}}
+                {{#if this.address}} <td>{{this.address}}</td> {{/if}}
+            {{/each}}
+        </tr>
+            {{/each}}
+    </tbody>
+    </table>
+</div>
