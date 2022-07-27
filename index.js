@@ -18,5 +18,5 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);   //agregar ruta importada en la app
 
-app.listen(`0.0.0.0:$PORT`, ()=> console.log("Server ON"));
+app.listen(3000, ()=> console.log("Server ON"));
 
