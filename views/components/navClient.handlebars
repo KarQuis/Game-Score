@@ -10,7 +10,10 @@
           <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#modalInicioSesion" href="#">Iniciar Sesión</a>
+          <a id="initSesion" class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#modalInicioSesion" href="#">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item">
+          <a id="closeSesion" class="nav-link text-light" style="display: none;" href="#">Cerrar Sesión</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,19 +44,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="https://proyectotienda-production.up.railway.app/user/client">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Correo</label>
+            <label for="inputEmail" class="form-label">Correo</label>
             <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">Nunca compartiremos tu email con terceros</div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <label for="inputPassword" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="inputPassword">
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="check1">
-            <label class="form-check-label" for="exampleCheck1">Recordar</label>
+            <label class="form-check-label" for="check1">Recordar</label>
           </div>
           <button type="submit" class="btn btn-primary">Ingresar</button>
         </form>

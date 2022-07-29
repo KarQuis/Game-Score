@@ -39,7 +39,12 @@ module.exports = {
         });
         console.log(responseUsers);
         res.render("AdminUsers",{responseUsers});
+    },
+    
+    initSesion: async (req, res) => {
+        res.render("user")
     }
+
 };
 
 
