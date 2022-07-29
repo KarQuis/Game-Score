@@ -10,7 +10,7 @@
           <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Iniciar Sesión</a>
+          <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#modalInicioSesion" href="#">Iniciar Sesión</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,3 +31,36 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal Inicio Sesión-->
+<div class="modal fade" id="modalInicioSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Nunca compartiremos tu email con terceros</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="inputPassword">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="check1">
+            <label class="form-check-label" for="exampleCheck1">Recordar</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
