@@ -1,44 +1,47 @@
-const Usuario = require("../models/user.js");
-const Direccion = require("../models/direccion.js");
-const {getUsers} = require("../database/queryUser.js");
-const {getAddress} = require("../database/queryAddress.js");
+const userQuerys = require("../database/userQuery.js");
 
-const generarUsuario = (e, i = []) => {
-    let usuario = new Usuario;
-    usuario.id = e.id;
-    usuario.email = e.email;
-    usuario.password = e.password;
-    usuario.name = e.name;
-    usuario.rol = e.rol;
-    usuario.direccion = i;
-    return usuario;
-};
-
-const generarDireccion = (e) => {
-    let direccion = new Direccion;
-    direccion.id_ = e.id_;
-    direccion.idUser = e.id_user;
-    direccion.address = e.address;
-    direccion.comuna = e.comuna;
-    direccion.city = e.city;
-    direccion.phone = e.phone;
-    return direccion;
-};
 
 module.exports = {
-    getUser: async (req, res) => {
-        const users = await getUsers();
-        const address = await getAddress();
-        let responseUsers = users.map((e) => {
-            let responseAddress = address.filter((element) => {
-                addressObj = generarDireccion(element)
-                return addressObj.idUser == e.id               
-            });
-            let response = generarUsuario(e, responseAddress)
-            return response;
-        });
-        console.log(responseUsers);
-        res.render("AdminUsers",{responseUsers});
+    getUsers: async (req, res) => {  //Funcion para ruta principal
+        try {
+            const response = await userQuerys.getUsers()
+            res.send(response);    
+        } catch (error) {
+            res.status(500).send({
+                error: error.message,
+                code:500
+            })
+        }
+    },
+
+    postUser: async (req, res) => { //Funcion para crear usuario
+        try {
+            const {email, password, name} = req.body;
+            const response = await userQuerys.postUser({email, password, name});
+            (response.code)
+                ? res.send(response)
+                : res.send({message:`El Usuario fué creado con éxito`, code:200});    
+        } catch (error) {
+            res.status(500).send({
+                error: error.message,
+                code:500
+            })
+        }
+    },
+
+    putUser: async (req, res) => {  //Editar datos de usuario
+        try {
+            const {id, email, password, name} = req.body;
+            const response = await userQuerys.putUser({id, email, password, name});
+            (response.code)
+                ? res.send(response)
+                : res.send({message:`El Usuario fué modificado con éxito`, code:200});
+        } catch (error) {
+            res.status(500).send({
+                error: error.message,
+                code:500
+            })
+        }
     },
     
     initSesion: async (req, res) => {
