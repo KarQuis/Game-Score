@@ -21,10 +21,11 @@ module.exports = {
     },
     postReview: async (reseña)=>{
         try {
-            const {idUser, idGame, score, content} = reseña;
+            const {idUser, idGame, userName, score, content} = reseña;
             const newReview = await Review.create({ //create: metodo para crear nuevo juego
                 idUser, 
-                idGame, 
+                idGame,
+                userName, 
                 score, 
                 content
             });
@@ -34,6 +35,22 @@ module.exports = {
             return {message: `No es posible crear Reseña con esos datos`, code:404}
         }
     },
+    getReviewGameByUser: async(reviewToValidate)=> {    //Verificar si usuario ya ha hecho reseña para ese juego
+        try {
+            const {idUser, idGame} = reviewToValidate;
+            const reviewValidate = await Review.findOne({
+                where: {
+                    idUser: idUser,
+                    idGame: idGame
+                },
+                raw: true});
+            if (reviewValidate) {throw error}
+            return true;
+        } catch (error) {
+            return {message: `Ya se ha realizado una reseña para este juego`, code:405}
+        }
+    },
+
     putReview: async ()=>{
 
     }

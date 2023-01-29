@@ -45,7 +45,7 @@ module.exports = {
     },
     
     initSesion: async (req, res) => {
-        res.render("user")
+        res.render("login")
     }
 
 };

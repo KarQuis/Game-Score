@@ -53,7 +53,7 @@ module.exports = {
             if (!user) {throw error}
             return user;
         } catch (error) {
-            return {message: `No existe un usuario con esos datos`, code:404}
+            return {message: `Datos de usuario incorrectos`, code:404}
         }
     },
 }

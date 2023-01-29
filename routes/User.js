@@ -30,6 +30,8 @@ router.post("/", userController.postUser);
 
 router.put("/", userController.putUser);
 
-router.post("/client", authController.initSesion);
+router.post("/login", authController.initSesion);
+
+router.get("/sesion", userController.initSesion);
 
 module.exports = router;
