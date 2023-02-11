@@ -34,4 +34,6 @@ router.post("/login", authController.initSesion);
 
 router.get("/sesion", userController.initSesion);
 
+router.get("/signin", userController.signUser)
+
 module.exports = router;

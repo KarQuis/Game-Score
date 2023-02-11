@@ -3,6 +3,7 @@ const Review = require("../models/review.js");
 const Category = require("../models/category.js");
 const Game = require("../models/game.js");
 const CategoryGame = require("../models/categoryGame.js");
+const hash = require("../util/hash.js");
 
 module.exports = {
     getUsers: async ()=>{
@@ -11,12 +12,19 @@ module.exports = {
     },
     postUser: async (usuario)=>{
         try {
-            const {email, password, name} = usuario
+            let {email, password, name} = usuario
+            const passHash = await hash.hashPass(password); //Hasheo password
+            password = passHash
+            console.log(password);
+            if (passHash.code) {
+                throw error
+            };
             const newUser = await User.create({ //create: metodo para crear nuevo usuario
                 email, 
                 password, 
                 name
             });
+            console.log(newUser);
             if (!newUser) {
                 throw error
             }
@@ -47,7 +55,6 @@ module.exports = {
             const user = await User.findOne({   //buscar un usuario
                 where: {
                     email: email,
-                    password: password
                 },
                 raw: true });    //raw: metodo para entregar respuesta plana
             if (!user) {throw error}

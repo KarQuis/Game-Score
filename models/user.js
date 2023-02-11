@@ -18,7 +18,6 @@ const User = sequelize.define("user", { //define:metodo para crear tablas en db
     password:{
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{len: [8,25]}
     },
     name:{
         type: DataTypes.STRING,

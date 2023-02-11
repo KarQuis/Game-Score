@@ -46,8 +46,11 @@ module.exports = {
     
     initSesion: async (req, res) => {
         res.render("login")
-    }
+    },
 
+    signUser: async (req, res) =>{
+        res.render("signIn")
+    }
 };
 
 
