@@ -87,8 +87,7 @@ $("#previewPage").event("click", async (e)=> {  //Evento para regresar de pagina
     } else {
         $("#previewPage")[0].classList.remove("hidden");
     }
-
-    // $("#nextPage")[0].classList.remove("hidden")
+    $("#nextPage")[0].classList.remove("hidden")
 });
 
 $(".logout").event("click", async (e)=> {
