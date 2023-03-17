@@ -74,7 +74,8 @@ $("#nextPage").event("click", async (e)=> { //evento para cambiar de pagina
         $("#nextPage")[0].classList.add("hidden")    //Ocultar nextPage
     } else {
         $("#nextPage")[0].classList.remove("hidden")
-    }
+    };
+    $("#previewPage")[0].classList.remove("hidden");
 });
 
 $("#previewPage").event("click", async (e)=> {  //Evento para regresar de pagina
@@ -86,7 +87,7 @@ $("#previewPage").event("click", async (e)=> {  //Evento para regresar de pagina
         $("#previewPage")[0].classList.add("hidden");   //Ocultar previewPage
     } else {
         $("#previewPage")[0].classList.remove("hidden");
-    }
+    };
     $("#nextPage")[0].classList.remove("hidden")
 });
 
