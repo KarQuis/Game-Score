@@ -77,15 +77,18 @@ $("#nextPage").event("click", async (e)=> { //evento para cambiar de pagina
     }
 });
 
-$("#previewPage").event("click", async (e)=> {
+$("#previewPage").event("click", async (e)=> {  //Evento para regresar de pagina
     let numberPage = Number(page.innerText);
     const games = await reloadGames(numberPage-2);
     await reloadCards(games);
     page.innerText --;
     if (numberPage-2 == 0) {
-        $("#previewPage")[0].classList.add("hidden")    //Ocultar previewPage
-    };
-    $("#nextPage")[0].classList.remove("hidden")
+        $("#previewPage")[0].classList.add("hidden");   //Ocultar previewPage
+    } else {
+        $("#previewPage")[0].classList.remove("hidden");
+    }
+
+    // $("#nextPage")[0].classList.remove("hidden")
 });
 
 $(".logout").event("click", async (e)=> {
