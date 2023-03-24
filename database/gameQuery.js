@@ -3,7 +3,7 @@ const {sequelize} = require("../database/conexion.js");
 
 module.exports = {
     getGames: async ()=>{
-        const games = await Game.findAll({ raw: true, limit: 9 });    //raw: metodo para entregar respuesta plana
+        const games = await Game.findAll({ raw: true, order: [['year','DESC']], limit: 9 });    //raw: metodo para entregar respuesta plana
         return games;
     },
 
