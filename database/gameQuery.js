@@ -43,7 +43,15 @@ module.exports = {
             return {message: `No es posible crear Videojuego con esos datos`, code:404}
         }
     },
-    putGame: async ()=>{
-
+    updateGame: async (videojuego)=>{
+        try {
+            const {id, year, urlImage} = videojuego;
+            const updateGame = await Game.update({
+                year: year, urlImage:urlImage
+            },{where:{id: id}})
+            console.log(updateGame);
+        } catch (error) {
+            return {message: `No es posible modificar Videojuego con esos datos`, code:404}
+        }
     }
 }

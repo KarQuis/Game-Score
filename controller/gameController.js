@@ -86,7 +86,9 @@ module.exports = {
 
     putGame: async (req, res) => {  //Editar datos de game
         try {
-
+            const {id, year, urlImage} = req.body;
+            const updateGame = await gameQuerys.updateGame({id, year, urlImage});
+            console.log(updateGame);
         } catch (error) {
             res.status(500).send({
                 error: error.message,
