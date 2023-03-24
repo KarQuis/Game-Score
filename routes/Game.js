@@ -13,4 +13,6 @@ router.get("/page/next", gameController.getNewPage);
 
 router.post("/", gameController.postGame);
 
+router.put("/", gameController.putGame);
+
 module.exports = router;
