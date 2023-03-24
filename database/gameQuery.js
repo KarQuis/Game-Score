@@ -3,14 +3,14 @@ const {sequelize} = require("../database/conexion.js");
 
 module.exports = {
     getGames: async ()=>{
-        const games = await Game.findAll({ raw: true, order: [['year','DESC']], limit: 9 });    //raw: metodo para entregar respuesta plana
+        const games = await Game.findAll({ raw: true, order: [['createdAt','DESC']], limit: 9 });    //raw: metodo para entregar respuesta plana
         return games;
     },
 
     getGamesPage: async (page)=> {
         try {
             const set = page*9;
-            const gamesPage = await Game.findAll({raw: true, order: [['year','DESC']], offset: set, limit: 9});
+            const gamesPage = await Game.findAll({raw: true, order: [['createdAt','DESC']], offset: set, limit: 9});
             if (!gamesPage[0]) {throw error}
             return gamesPage;    
         } catch (error) {
