@@ -10,7 +10,7 @@ module.exports = {
     getGamesPage: async (page)=> {
         try {
             const set = page*9;
-            const gamesPage = await Game.findAll({raw: true, offset: set, limit: 9});
+            const gamesPage = await Game.findAll({raw: true, order: ['year','DESC'],offset: set, limit: 9});
             if (!gamesPage[0]) {throw error}
             return gamesPage;    
         } catch (error) {
