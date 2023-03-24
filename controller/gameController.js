@@ -88,7 +88,11 @@ module.exports = {
         try {
             const {id, year, urlImage} = req.body;
             const updateGame = await gameQuerys.updateGame({id, year, urlImage});
-            console.log(updateGame);
+            if (updateGame.code) {
+                res.send({message:`No fué posible editar el Videojuego`, code:404});
+            } else {
+                res.send({message:`El Videojuego fué editado con éxito`, code:200});
+            }
         } catch (error) {
             res.status(500).send({
                 error: error.message,
