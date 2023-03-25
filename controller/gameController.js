@@ -22,7 +22,7 @@ module.exports = {
         try {
             const {page} = req.headers;
             const response = await gameQuerys.getGamesPage(page);
-            res.json(response);
+            res.json(response); //Para envio de array directo con formato json
         } catch (error) {
             res.status(500).send({
                 error: error.message,
@@ -44,7 +44,7 @@ module.exports = {
                 const sumScore = await reviewQuerys.getScoresSum(id);
                 promedio = (sumScore/count).toFixed(1);    
             }
-            (response.code)
+            (response.code) //En caso de la respuesta presente un error
             ? res.send(response)
             : res.render("gameInfo", {...response, rows, promedio});
         } catch (error) {
@@ -98,6 +98,21 @@ module.exports = {
                 error: error.message,
                 code:500
             })
+        }
+    },
+
+    gameByTitle: async (req, res)=> {
+        try {
+            const {title} = req.headers;
+            const gamesFinds = await gameQuerys.getGameByTitle({title});
+            (gamesFinds.code)   //En caso de respuesta con error
+            ? res.send({message: `No se encontró ninguna coincidencia`, code:404})
+            : res.send({message:`Busqueda realizada con éxito`, code:200});
+        } catch (error) {
+            res.status(500).send({
+                error: error.message,
+                code:500
+            }) 
         }
     }
     

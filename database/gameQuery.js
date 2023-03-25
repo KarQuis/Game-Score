@@ -1,5 +1,6 @@
 const Game = require("../models/game.js");
 const {sequelize} = require("../database/conexion.js");
+const { Op } = require("sequelize");
 
 module.exports = {
     getGames: async ()=>{
@@ -53,6 +54,19 @@ module.exports = {
             return updateGame;
         } catch (error) {
             return {message: `No es posible modificar Videojuego con esos datos`, code:404}
+        }
+    },
+    getGameByTitle: async (videojuego)=> {
+        try {
+            const {title} = videojuego;
+            const seachGame = await Game.findAll({
+                order: [['createdAt','DESC']],
+                where:{title:{[Op.substring]:title}}
+            });
+            if (!seachGame) {throw error}
+            return seachGame;
+        } catch (error) {
+            return {message: `No es posible encontrar el Videojuego`, code:404}
         }
     }
 }

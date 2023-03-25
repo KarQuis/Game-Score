@@ -15,4 +15,6 @@ router.post("/", gameController.postGame);
 
 router.put("/", gameController.putGame);
 
+router.get("/api/seach", gameController.gameByTitle);
+
 module.exports = router;
