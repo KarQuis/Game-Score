@@ -104,12 +104,17 @@ $(".logout").event("click", async (e)=> {
     location.reload();
 });
 
+$("#seach").event("change", async (e)=>{    //Evento para cambio en input por busqueda
+    console.log(e.target.value)
+})
+
 (()=> { //Funcion autoejecutable para verificar token
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
         $(".logout")[0].classList.remove("hidden")   
     }
 })();
+
 
 
 
