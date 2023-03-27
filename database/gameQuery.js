@@ -63,7 +63,7 @@ module.exports = {
                 order: [['createdAt','DESC']],
                 where:{title:{[Op.substring]:title}}
             });
-            if (!seachGame) {throw error}
+            if (!seachGame[0]) {throw error}
             return seachGame;
         } catch (error) {
             return {message: `No es posible encontrar el Videojuego`, code:404}
