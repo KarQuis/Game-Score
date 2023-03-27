@@ -1,3 +1,4 @@
+import { getGameByTitle } from "../../database/gameQuery.js";
 import {$} from "./library.js";
 
 const gamesCards = $("#gamesCards")[0];
@@ -23,6 +24,22 @@ const reloadGames = async (page)=> {  //Funciòn para reemplazar cards
         console.log(`Error: ${err}`)
     }
 };
+
+const seachGames = async (title) =>{
+    try {
+        const request = await fetch('/game/api/seach',
+        {
+          method:'GET',
+          headers: {'Content-Type': 'application/json', 
+            'title': title
+            }
+        })
+        const response = await request.json();
+        return response;
+    } catch (err) {
+        console.log(`Error: ${err}`)
+    }
+}
 
 const reloadCards = async (games)=> {
     gamesCards.innerHTML = "";
@@ -105,8 +122,13 @@ $(".logout").event("click", async (e)=> {
 });
 
 $("#seach").event("change", async (e)=>{    //Evento para cambio en input por busqueda
-    console.log(e.target.value)
-})
+    const gameByTitle = await seachGames(e.target.value);
+    if (!gameByTitle.code) {
+        reloadCards(getGameByTitle);
+    } else {
+        alert(gameByTitle.message)
+    }
+});
 
 (()=> { //Funcion autoejecutable para verificar token
     if (localStorage.getItem("gamescore-jwt")) {
