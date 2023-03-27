@@ -121,9 +121,15 @@ $(".logout").event("click", async (e)=> {
 });
 
 $("#seach").event("change", async (e)=>{    //Evento para cambio en input por busqueda
+    if (e.target.value == "") {
+        location.reload();
+    }
     const gameByTitle = await seachGames(e.target.value);
     if (!gameByTitle.code) {
         reloadCards(gameByTitle);
+        $("#nextPage")[0].classList.add("hidden")    //Ocultar nextPage
+        $("#previewPage")[0].classList.add("hidden");   //Ocultar previewPage
+        page.innerText = 1;
     } else {
         alert(gameByTitle.message)
     }
