@@ -1,4 +1,3 @@
-import { getGameByTitle } from "../../database/gameQuery.js";
 import {$} from "./library.js";
 
 const gamesCards = $("#gamesCards")[0];
