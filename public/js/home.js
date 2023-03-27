@@ -125,7 +125,7 @@ $("#seach").event("change", async (e)=>{    //Evento para cambio en input por bu
         location.reload();
     }
     const gameByTitle = await seachGames(e.target.value);
-    if (!gameByTitle.code) {
+    if (gameByTitle[0]) {
         reloadCards(gameByTitle);
         $("#nextPage")[0].classList.add("hidden")    //Ocultar nextPage
         $("#previewPage")[0].classList.add("hidden");   //Ocultar previewPage
