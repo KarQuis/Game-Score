@@ -123,7 +123,7 @@ $(".logout").event("click", async (e)=> {
 $("#seach").event("change", async (e)=>{    //Evento para cambio en input por busqueda
     const gameByTitle = await seachGames(e.target.value);
     if (!gameByTitle.code) {
-        reloadCards(getGameByTitle);
+        reloadCards(gameByTitle);
     } else {
         alert(gameByTitle.message)
     }
