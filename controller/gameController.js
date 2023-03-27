@@ -105,9 +105,7 @@ module.exports = {
         try {
             const {title} = req.headers;
             const gamesFinds = await gameQuerys.getGameByTitle({title});
-            (gamesFinds.code)   //En caso de respuesta con error
-            ? res.send({message: `No se encontró ninguna coincidencia`, code:404})
-            : res.json(gamesFinds);
+            res.json(gamesFinds);
         } catch (error) {
             res.status(500).send({
                 error: error.message,
