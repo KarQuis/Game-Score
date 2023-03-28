@@ -50,7 +50,7 @@ module.exports = {
             console.log("--------")
             (response.code)
                 ? res.redirect("/")
-                : res.render("profileUser", {response});
+                : res.render("profileUser", response);
         } catch (error) {
             res.status(500).send({
                 error: error.mesaage,
