@@ -14,6 +14,7 @@ router.use("*/profile/:idUser/:token", (req, res, next)=>{  //middleware para to
         jwt.verify(token, jwtKey, (error, decoded)=>{    //Verificar token
             const {data} = decoded;
             const {id} = data;
+            console.log(id, idUser)
             if (id != idUser) {
                 throw error
             };
