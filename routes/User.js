@@ -9,6 +9,7 @@ const jwtKey = "my_secret";
 router.use("*/profile/:idUser/:token", (req, res, next)=>{  //middleware para token
     try {
         const {idUser, token} = req.params;
+        let idToken ;
         console.log(token);
         console.log("----------")
         idUser = Number(idUser);
@@ -16,9 +17,11 @@ router.use("*/profile/:idUser/:token", (req, res, next)=>{  //middleware para to
         jwt.verify(token, jwtKey, (error, decoded)=>{    //Verificar token
             const {data} = decoded;
             const {id} = data;
-            if (!id == idUser) {
+            idToken = id;
+            if (!id) {
                 throw error
             };
+            console.log(idToken);
             next();
         });    
     } catch (error) {
