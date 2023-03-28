@@ -10,6 +10,7 @@ router.use("*/profile/:idUser/:token", (req, res, next)=>{  //middleware para to
     try {
         const {idUser, token} = req.params;
         console.log(token);
+        console.log("----------")
         idUser = Number(idUser);
         jwt.verify(token, jwtKey, (error, decoded)=>{    //Verificar token
             const {data} = decoded;
