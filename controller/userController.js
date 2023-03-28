@@ -46,6 +46,7 @@ module.exports = {
             const {id} = req.params;
             id = Number(id);
             const response = await userQuerys.getUserProfile({id});
+            console.log(response);
             (response.code)
                 ? res.redirect("/")
                 : res.render("profileUser", {response});
@@ -56,7 +57,7 @@ module.exports = {
             });
         }
     }
-    
+
 };
 
 
