@@ -44,6 +44,7 @@ module.exports = {
     getProfile: async (req, res)=> {    //Datos de usuario para Perfil
         try {
             const {id} = req.params;
+            id = Number(id);
             const response = await userQuerys.getUserProfile({id});
             (response.code)
                 ? res.redirect("/")
