@@ -6,7 +6,7 @@ const authController = require("../controller/authController.js");
 const jwt = require("jsonwebtoken");
 const jwtKey = "my_secret";
 
-router.use("*/profile/:token", (req, res, next)=>{  //middleware para token
+router.use("*/profile/:idUser/:token", (req, res, next)=>{  //middleware para token
     try {
         const {token} = req.params;
         console.log(token);
@@ -35,7 +35,7 @@ router.get("/sesion", userController.initSesion);
 
 router.get("/signin", userController.signUser);
 
-router.get(":idUser/profile/:token", userController.getProfile);
+router.get("/profile/:idUser/:token", userController.getProfile);
 
 
 module.exports = router;

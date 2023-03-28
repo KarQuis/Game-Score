@@ -61,9 +61,9 @@ module.exports = {
     },
     getUserProfile: async (usuario)=> {  //Acceder a info de usuario para su perfil
         try {
-            const {id} = usuario;
+            const {idUser} = usuario;
             const userProfile = await User.findOne({
-                where:{id: id},
+                where:{id: idUser},
                 raw: true
             });
             if (!userProfile) {throw error}

@@ -9,7 +9,7 @@ const goPage = (id)=> {   //Funcion para mostrar info de cada card
 };
 
 const goProfile = (id, token)=>{
-    window.open(`/user/${id}/profile/${token}`, '_self');
+    window.open(`/user/profile/${id}/${token}`, '_self');
 };
 
 const reloadGames = async (page)=> {  //Funciòn para reemplazar cards
