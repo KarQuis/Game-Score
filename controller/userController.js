@@ -2,17 +2,6 @@ const userQuerys = require("../database/userQuery.js");
 
 
 module.exports = {
-    getUsers: async (req, res) => {  //Funcion para ruta principal
-        try {
-            const response = await userQuerys.getUsers()
-            res.send(response);    
-        } catch (error) {
-            res.status(500).send({
-                error: error.message,
-                code:500
-            })
-        }
-    },
 
     postUser: async (req, res) => { //Funcion para crear usuario
         try {
@@ -50,7 +39,23 @@ module.exports = {
 
     signUser: async (req, res) =>{
         res.render("signIn")
+    },
+
+    getProfile: async (req, res)=> {    //Datos de usuario para Perfil
+        try {
+            const {id} = req.params;
+            const response = await userQuerys.getUserProfile({id});
+            (response.code)
+                ? res.redirect("/")
+                : res.render("profileUser", {response});
+        } catch (error) {
+            res.status(500).send({
+                error: error.mesaage,
+                code: 500
+            });
+        }
     }
+    
 };
 
 

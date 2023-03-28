@@ -6,10 +6,7 @@ const CategoryGame = require("../models/categoryGame.js");
 const hash = require("../util/hash.js");
 
 module.exports = {
-    getUsers: async ()=>{
-        const users = await User.findAll({ raw: true });    //raw: metodo para entregar respuesta plana
-        return users;
-    },
+
     postUser: async (usuario)=>{
         try {
             let {email, password, name} = usuario
@@ -51,16 +48,29 @@ module.exports = {
     },
     getUser: async (usuario)=>{
         try {
-            const {email, password} = usuario;  //descomponer información
+            const {email} = usuario;  //descomponer información
             const user = await User.findOne({   //buscar un usuario
-                where: {
-                    email: email,
-                },
-                raw: true });    //raw: metodo para entregar respuesta plana
+                where: {email: email},
+                raw: true   //raw: metodo para entregar respuesta plana
+            });    
             if (!user) {throw error}
             return user;
         } catch (error) {
             return {message: `Datos de usuario incorrectos`, code:404}
         }
     },
+    getUserProfile: async (usuario)=> {  //Acceder a info de usuario para su perfil
+        try {
+            const {id} = usuario;
+            const userProfile = await User.findOne({
+                where:{id: id},
+                raw: true
+            });
+            if (!userProfile) {throw error}
+            return userProfile;
+        } catch (error) {
+            return {message: `Usuario sin acceso`, code:404} 
+        }
+    }
+
 }

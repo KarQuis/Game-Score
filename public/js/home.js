@@ -8,6 +8,10 @@ const goPage = (id)=> {   //Funcion para mostrar info de cada card
     window.open(`/game/${id}`, '_self');
 };
 
+const goProfile = (id, token)=>{
+    window.open(`/user/profile/${id}/${token}`, '_self');
+};
+
 const reloadGames = async (page)=> {  //Funciòn para reemplazar cards
     try {
         const request = await fetch('/game/page/next',
@@ -133,6 +137,10 @@ $("#seach").event("change", async (e)=>{    //Evento para cambio en input por bu
     } else {
         alert(gameByTitle.message)
     }
+});
+
+$(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
+    goProfile(localStorage.getItem("gamescore-userId"), localStorage.getItem("gamescore-jwt"))
 });
 
 (()=> { //Funcion autoejecutable para verificar token
