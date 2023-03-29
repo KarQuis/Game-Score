@@ -1,3 +1,3 @@
-import {$} from "../library.js";
+import {$} from "../../library.js";
 
 
