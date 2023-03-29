@@ -50,7 +50,16 @@ module.exports = {
             return {message: `Ya se ha realizado una reseña para este juego`, code:405}
         }
     },
-
+    getReviewsByUser: async (user)=>{ //Para perfil de usuario
+        try {
+            const {id} = user;
+            const reviewsUser = await Review.findAll({where:{idUser:id}, raw: true});
+            if (!reviewsUser[0]) {throw error}
+            return reviewsUser;
+        } catch (error) {
+            return {message: `No es posible mostrar las reseñas del Usuario`, code:404}
+        }
+    },
     putReview: async ()=>{
 
     }
