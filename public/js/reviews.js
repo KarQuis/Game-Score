@@ -1,5 +1,9 @@
 import {$} from "./library.js";
 
+const goProfile = (id, token)=>{
+    window.open(`/user/${id}/${token}`, '_self');
+};
+
 const postReview = async (data)=> {   //verificar datos
     try {
         const response = await fetch('/review/verify',
@@ -64,6 +68,10 @@ $("#formReview").event("submit", async (e)=> {
         }, 3000)
     }
     console.log(response);
+});
+
+$(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
+    goProfile(localStorage.getItem("gamescore-userId"), localStorage.getItem("gamescore-jwt"))
 });
 
 (()=> { //Funcion autoejecutable para verificar token
