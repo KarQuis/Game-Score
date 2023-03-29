@@ -32,6 +32,19 @@ module.exports = {
         }
     },
 
+    getReviewUser: async (req, res)=> { //Para perfil usuario
+        try {
+            const {id} = req.headers;
+            const response = await reviewQuerys.getReviewsByUser({id});
+            res.json(response);
+        } catch (error) {
+            res.status(500).send({
+                error: error.mesaage,
+                code: 500
+            });
+        }
+    },
+
     putReview: async (req, res) => {  //Editar datos 
         try {
 

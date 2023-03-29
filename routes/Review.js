@@ -8,7 +8,6 @@ const jwtKey = "my_secret";
 router.use("*/verify", (req, res, next)=>{  //middleware para token
     try {
         const {token} = req.headers;
-        console.log(token);
         jwt.verify(token, jwtKey, (error, decoded)=>{    //Verificar token
             const {data} = decoded;
             const {id} = data;
@@ -28,5 +27,7 @@ router.use("*/verify", (req, res, next)=>{  //middleware para token
 router.get("/", reviewController.getReviews);
 
 router.post("/verify", reviewController.postReview);
+
+router.get("/profile/verify", reviewController.getReviewUser);
 
 module.exports = router;

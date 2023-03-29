@@ -59,19 +59,6 @@ module.exports = {
                 code: 500
             });
         }
-    },
-
-    getReviewUser: async (req, res)=> {
-        try {
-            const {id} = req.headers;
-            const response = await userQuerys.getReviewUser({id});
-            res.json(response);
-        } catch (error) {
-            res.status(500).send({
-                error: error.mesaage,
-                code: 500
-            });
-        }
     }
 
 };
