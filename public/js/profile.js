@@ -26,7 +26,7 @@ const reloadReviews = async (review)=> {    //Funcion para mostrar reviews
         newArticle.setAttribute("data-info", `${element.idGame}`)   //integrar atributos a la div
         newArticle.setAttribute("class", "cardReview hover:cursor-pointer bg-[#F8F4EA] shadow-lg rounded-lg my-4 p-4")
         let newP1 = document.createElement("p");    //Crear parrafo
-        newP1.setAttribute("class", "text-lg py-4");
+        newP1.setAttribute("class", "pt-1");
         newP1.innerText = `Score: ${element.score}`;
         newArticle.appendChild(newP1);  //Insertar elementos en div
         let newP2 = document.createElement("p");    //Crear parrafo
