@@ -145,8 +145,7 @@ $(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
 });
 
 $(".menuBtn").event("click", async (e)=>{
-    $(".logout")[0].classList.remove("hidden");
-    $(".profile")[0].classList.remove("hidden");
+    $("#menuUser")[0].classList.toggle("hidden");
 });
 
 (()=> { //Funcion autoejecutable para verificar token
