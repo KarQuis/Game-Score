@@ -57,7 +57,7 @@ $(".logout").event("click", async (e)=> {
     $("#menuUser")[0].classList.add("hidden");
     $(".menuBtn")[0].classList.add("hidden");
     alert("Sesión cerrada con éxito");
-    window.open("/");
+    window.open("/","_self");
 });
 
 $(".menuBtn").event("click", async (e)=>{
