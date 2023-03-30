@@ -20,13 +20,13 @@ const goGame =  (id)=>{
 }
 
 const reloadReviews = async (review)=> {    //Funcion para mostrar reviews
-    // gamesCards.innerHTML = "";
+    reviewUser.innerHTML = "";
     review.forEach(element => {
         let newArticle = document.createElement("article"); //Crear articulo
         newArticle.setAttribute("data-info", `${element.idGame}`)   //integrar atributos a la div
         newArticle.setAttribute("class", "cardReview cursor-pointer bg-[#F8F4EA] shadow-lg rounded-lg my-4 p-4")
         let newP1 = document.createElement("p");    //Crear parrafo
-        newP1.setAttribute("class", "text-lg font-semibold py-4");
+        newP1.setAttribute("class", "text-lg py-4");
         newP1.innerText = `Score: ${element.score}`;
         newArticle.appendChild(newP1);  //Insertar elementos en div
         let newP2 = document.createElement("p");    //Crear parrafo
