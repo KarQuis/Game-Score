@@ -57,13 +57,12 @@ $(".logout").event("click", async (e)=> {
     $("#menuUser")[0].classList.add("hidden");
     $(".menuBtn")[0].classList.add("hidden");
     alert("Sesión cerrada con éxito");
-    location.reload();
+    window.open("/");
 });
 
 $(".menuBtn").event("click", async (e)=>{
     $("#menuUser")[0].classList.toggle("hidden");
 });
-
 
 (()=> { //Funcion autoejecutable para verificar token
     $("#menuUser")[0].classList.add("hidden");
