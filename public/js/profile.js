@@ -24,14 +24,14 @@ const reloadReviews = async (review)=> {    //Funcion para mostrar reviews
     review.forEach(element => {
         let newArticle = document.createElement("article"); //Crear articulo
         newArticle.setAttribute("data-info", `${element.idGame}`)   //integrar atributos a la div
-        newArticle.setAttribute("class", "cardReview bg-[#F8F4EA] shadow-lg rounded-lg my-4 p-4")
+        newArticle.setAttribute("class", "cardReview cursor-pointer bg-[#F8F4EA] shadow-lg rounded-lg my-4 p-4")
         let newP1 = document.createElement("p");    //Crear parrafo
-        newP1.setAttribute("class", "text-xl font-semibold py-4");
-        newP1.innerText = `${element.score}`;
+        newP1.setAttribute("class", "text-lg font-semibold py-4");
+        newP1.innerText = `Score: ${element.score}`;
         newArticle.appendChild(newP1);  //Insertar elementos en div
         let newP2 = document.createElement("p");    //Crear parrafo
         newP2.setAttribute("class", "pt-2");
-        newP2.innerText = `${element.content}`;
+        newP2.innerText = `Reseña: ${element.content}`;
         newArticle.appendChild(newP2);  //Insertar elementos en div
 
         reviewUser.appendChild(newArticle); //Agregar review a nueva div
