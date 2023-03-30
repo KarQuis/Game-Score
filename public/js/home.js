@@ -144,6 +144,11 @@ $(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
     goProfile(localStorage.getItem("gamescore-userId"), localStorage.getItem("gamescore-jwt"))
 });
 
+$(".menuBtn").event("click", async (e)=>{
+    $(".logout")[0].classList.remove("hidden");
+    $(".profile")[0].classList.remove("hidden");
+});
+
 (()=> { //Funcion autoejecutable para verificar token
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
