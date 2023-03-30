@@ -43,3 +43,8 @@ $("#formLogin").event("submit", async (e)=> {
         }, 3000)
     }
 });
+
+(()=> { //Funcion autoejecutable para ocultar menu
+    $("#menuUser")[0].classList.add("hidden");
+    $(".login")[0].classList.add("hidden")
+})();
