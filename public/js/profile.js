@@ -60,10 +60,15 @@ $(".logout").event("click", async (e)=> {
     location.reload();
 });
 
+$(".menuBtn").event("click", async (e)=>{
+    $("#menuUser")[0].classList.toggle("hidden");
+});
+
+
 (()=> { //Funcion autoejecutable para verificar token
+    $("#menuUser")[0].classList.add("hidden");
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
-        $("#menuUser")[0].classList.remove("hidden")
         $(".menuBtn")[0].classList.remove("hidden"); 
     }
 })();
