@@ -50,3 +50,20 @@ $("#seeReview").event("click", async ()=>{  //Evento para ver reviews
         reloadReviews(reviews)
     }
 });
+
+$(".logout").event("click", async (e)=> {
+    localStorage.removeItem("gamescore-jwt");   //Eliminar token existente
+    $(".login")[0].classList.remove("hidden");
+    $("#menuUser")[0].classList.add("hidden");
+    $(".menuBtn")[0].classList.add("hidden");
+    alert("Sesión cerrada con éxito");
+    location.reload();
+});
+
+(()=> { //Funcion autoejecutable para verificar token
+    if (localStorage.getItem("gamescore-jwt")) {
+        $(".login")[0].classList.add("hidden")
+        $("#menuUser")[0].classList.remove("hidden")
+        $(".menuBtn")[0].classList.remove("hidden"); 
+    }
+})();

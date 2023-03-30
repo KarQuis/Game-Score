@@ -24,11 +24,12 @@ const removeToken = () => {
     localStorage.removeItem("gamescore-userName");   //Eliminar info usuario existente
 }
 
-$(".logout").event("click", (e)=> {
+$(".logout").event("click", async (e)=> {
     localStorage.removeItem("gamescore-jwt");   //Eliminar token existente
-    $(".login")[0].classList.remove("hidden")
-    $(".logout")[0].classList.add("hidden")
-    alert("Sesión cerrada con éxito")
+    $(".login")[0].classList.remove("hidden");
+    $("#menuUser")[0].classList.add("hidden");
+    $(".menuBtn")[0].classList.add("hidden");
+    alert("Sesión cerrada con éxito");
     location.reload();
 });
 
@@ -77,7 +78,8 @@ $(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
 (()=> { //Funcion autoejecutable para verificar token
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
-        $(".logout")[0].classList.remove("hidden")   
+        $("#menuUser")[0].classList.remove("hidden")
+        $(".menuBtn")[0].classList.remove("hidden"); 
     }
 })();
 
