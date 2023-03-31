@@ -149,7 +149,6 @@ $(".menuBtn").event("click", async (e)=>{
 });
 
 (()=> { //Funcion autoejecutable para verificar token
-    $("#menuUser")[0].classList.add("hidden");
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
         $(".menuBtn")[0].classList.remove("hidden"); 
