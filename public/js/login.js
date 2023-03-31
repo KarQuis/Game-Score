@@ -45,6 +45,5 @@ $("#formLogin").event("submit", async (e)=> {
 });
 
 (()=> { //Funcion autoejecutable para ocultar menu
-    $("#menuUser")[0].classList.add("hidden");
     $(".login")[0].classList.add("hidden")
 })();

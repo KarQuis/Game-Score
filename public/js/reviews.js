@@ -76,11 +76,11 @@ $(".profile").event("click", async (e)=>{   //Abrir pagina de perfil
 });
 
 $(".menuBtn").event("click", async (e)=>{
-    $("#menuUser")[0].classList.toggle("hidden");
+    $(".profile")[0].classList.toggle("hidden");
+    $(".logout")[0].classList.toggle("hidden");
 });
 
 (()=> { //Funcion autoejecutable para verificar token
-    $("#menuUser")[0].classList.add("hidden");
     if (localStorage.getItem("gamescore-jwt")) {
         $(".login")[0].classList.add("hidden")
         $(".menuBtn")[0].classList.remove("hidden"); 
