@@ -62,11 +62,6 @@ const reloadCards = async (games)=> {
         newP2.setAttribute("class", "pt-2");
         newP2.innerText = `${element.year}`;
         newDiv.appendChild(newP2);  //Insertar elementos en div
-        let newP3 = document.createElement("p");    //Crear parrafo
-        newP3.setAttribute("class", "pt-2");
-        newP3.innerText = `${element.id}`;
-        newDiv.appendChild(newP3);  //Insertar elementos en div
-
 
         gamesCards.appendChild(newDiv); //Agregar juego a nueva div
     });
