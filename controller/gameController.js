@@ -8,7 +8,8 @@ const { getReviews } = require("./reviewController.js");
 module.exports = {
     getGames: async (req, res) => {  //Funcion para ruta principal
         try {
-            const response = await gameQuerys.getGames()
+            const response = await gameQuerys.getGames();
+            console.log(process.env.JWT_KEY);
             res.render("home",{response});    
         } catch (error) {
             res.status(500).send({
