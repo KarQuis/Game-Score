@@ -45,11 +45,8 @@ module.exports = {
         try {
             const {idUser} = req.params;
             const response = await userQuerys.getUserProfile({idUser});
-            console.log("--------")
-            console.log(response);
-            console.log("--------")
             if (response.code) {
-                res.redirect("/")
+                res.render("profileUser")
             } else {
                 res.render("profileUser", response);
             }

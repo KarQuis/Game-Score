@@ -1,8 +1,4 @@
 const User = require("../models/user.js");
-const Review = require("../models/review.js");
-const Category = require("../models/category.js");
-const Game = require("../models/game.js");
-const CategoryGame = require("../models/categoryGame.js");
 const hash = require("../util/hash.js");
 
 module.exports = {
