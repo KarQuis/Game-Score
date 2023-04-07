@@ -33,20 +33,23 @@ module.exports = {
 
     getGame: async (req, res)=>{
         try {
-            let promedio;   //Variable para calcular valoracion de reseñas
+            let promedio = 0;   //Variable para calcular valoracion de reseñas
+            let reseñas = [];
             const {id} = req.params; 
             const response = await gameQuerys.getGame(id);  //recibir informacion del juego
-            const reviewGame = await reviewQuerys.getReviews(id);   //recibir informacion de reseñas
-            const {count, rows} = reviewGame;   //recibir cantidad de reseñas e informacion
-            if (!count) {   // En caso de no tener reseñas
-                promedio = false;
+            if (response.reviews) {
+                response.reviews.forEach(e => {
+                    promedio = promedio + e.score;
+                    reseñas.push({...e.dataValues});
+                });
+                promedio = promedio / (response.reviews.length);    
             } else {
-                const sumScore = await reviewQuerys.getScoresSum(id);
-                promedio = (sumScore/count).toFixed(1);    
+                promedio = false;
             }
+            const juego = {...response.dataValues};
             (response.code) //En caso de la respuesta presente un error
             ? res.send(response)
-            : res.render("gameInfo", {...response, rows, promedio});
+            : res.render("gameInfo", {juego, reseñas, promedio});
         } catch (error) {
             res.status(500).send({
                 error: error.message,

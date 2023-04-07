@@ -1,4 +1,5 @@
 const Game = require("../models/game.js");
+const Review = require("../models/review.js");
 const {sequelize} = require("../database/conexion.js");
 const { Op } = require("sequelize");
 
@@ -21,9 +22,8 @@ module.exports = {
 
     getGame: async (id)=>{
         try {
-            const gameOne = await Game.findByPk(id, {raw: true});
+            const gameOne = await Game.findByPk(id,{include:{model: Review}});
             if (!gameOne) {throw error}
-            console.log(gameOne)
             return gameOne;
         } catch (error) {
             return {message: `No es posible mostrar Videojuego`, code:404}

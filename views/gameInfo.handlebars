@@ -4,12 +4,12 @@
     <section class="flex flex-col items-center justify-center px-4 my-10">
         <div class="bg-[#F8F4EA] shadow-lg rounded-lg p-4">
             <div>
-                <h2 class="text-2xl text-center pb-6">{{this.title}}</h2>
-                <img src="{{this.urlImage}}" class="h-96" alt="">
+                <h2 class="text-2xl text-center pb-6">{{this.juego.title}}</h2>
+                <img src="{{this.juego.urlImage}}" class="h-96" alt="">
             </div>
             <div class="flex flex-col pt-4">
-                <p>Año: {{this.year}}</p>
-                <p>Estudio: {{this.studio}}</p>
+                <p>Año: {{this.juego.year}}</p>
+                <p>Estudio: {{this.juego.studio}}</p>
             </div>
             <div>
                 {{#if this.promedio}}
@@ -54,7 +54,7 @@
             </form>
         </div>
         <div class="">
-            {{#each rows}}
+            {{#each this.reseñas}}
             <article class="bg-[#F8F4EA] shadow-lg rounded-lg my-4 p-4">
                 <p>{{this.userName}}</p>
                 <p>Puntuación: {{this.score}}</p>
