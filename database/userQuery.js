@@ -66,6 +66,7 @@ module.exports = {
                 where:{id: idUser},
                 raw: true
             });
+            console.log(userProfile);
             if (!userProfile) {throw error}
             return userProfile;
         } catch (error) {
