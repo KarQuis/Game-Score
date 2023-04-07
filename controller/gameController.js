@@ -42,7 +42,7 @@ module.exports = {
                     promedio = promedio + e.score;
                     reseñas.push({...e.dataValues});
                 });
-                promedio = promedio / (response.reviews.length);    
+                promedio = (promedio / (response.reviews.length)).toFixed(1);    
             } else {
                 promedio = false;
             }
