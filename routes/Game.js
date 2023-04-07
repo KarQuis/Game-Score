@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
 const router = express.Router();    //Definir rutas
-const jwt = require("jsonwebtoken");
 const gameController = require("../controller/gameController.js");
-const jwtKey = "my_secret";
 
 // router.get("/", gameController.getGames);
 

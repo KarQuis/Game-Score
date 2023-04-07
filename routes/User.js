@@ -4,7 +4,7 @@ const router = express.Router();    //Definir rutas
 const userController = require("../controller/userController.js");
 const authController = require("../controller/authController.js");
 const jwt = require("jsonwebtoken");
-const jwtKey = "my_secret";
+const jwtKey = process.env.JWT_KEY;
 
 router.use("*/:idUser/:token", (req, res, next)=>{  //middleware para token
     try {
